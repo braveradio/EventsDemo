@@ -13,5 +13,7 @@
         <Button Command="{Binding ChangeCommand}" CommandParameter="{Binding Car}">Click me bitch</Button>
         <Button Command="{Binding CounterCommand}" CommandParameter="{Binding Car}">Counter</Button>
         <Button Command="{Binding CancelCommand}">Cancel</Button>
+        <TextBox Text="{Binding SomeText, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <Button Command="{Binding TextButton}" CommandParameter="{Binding SomeText}">Submit</Button>
     </StackPanel>
 </Window>

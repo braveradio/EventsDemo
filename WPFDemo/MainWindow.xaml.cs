@@ -53,7 +53,10 @@ namespace WPFDemo
             get
             {
                 return _changeCommand ??
-                    (_changeCommand = new RelayCommand(obj => Car.Name = new Random().Next(1, 5).ToString(),
+                    (_changeCommand = new RelayCommand(obj =>
+                    {
+                        Car.Name = new Random().Next(1, 5).ToString();
+                    },
                     (obj) =>
                     {
                         if(obj is Car)
@@ -69,6 +72,54 @@ namespace WPFDemo
                     ));
             }
         }
+
+        private string _someText = "";
+
+        public string SomeText
+        {
+            get 
+            {
+                return  _someText; 
+            }
+            set
+            {
+                //if (!string.Equals(this._someText, value))
+                //{
+                    _someText = value;
+                    OnPropertyChanged("SomeText");
+                //}
+                //TextButton.RaiseCanExecuteChanged();
+                //TextButton.CanExecuteChanged += TextButton_CanExecuteChanged;
+            }
+        }
+
+        private void TextButton_CanExecuteChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private string text;
+
+        private ICommand _textButton;
+
+        public ICommand TextButton
+        {
+            get 
+            {
+                return _textButton ??
+                    (_textButton = new RelayCommand(obj =>
+                    {
+                        //Console.WriteLine("Clicked");
+                        //text = (obj as String);
+                    }, 
+                    obj => 
+                    {
+                        return !String.IsNullOrEmpty(SomeText);
+                    }
+                    ));
+            }
+        }
+
         private int counter = 0;
         public ICommand CounterCommand
         {

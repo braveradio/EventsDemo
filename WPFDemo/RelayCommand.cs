@@ -34,6 +34,12 @@ namespace WPFDemo
             this.execute(parameter);
         }
 
+        //public void RaiseCanExecuteChanged()
+        //{
+        //    if (CanExecuteChanged != null)
+        //        CanExecuteChanged(this, new EventArgs());
+        //}
+
         //public event EventHandler CanExecuteChanged;
 
     }
